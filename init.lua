@@ -33,8 +33,12 @@ require("config.keybinds")
 vim.pack.add({
 	{
 		src = "https://github.com/nvim-treesitter/nvim-treesitter",
-		data = { on_update = function() vim.cmd("TSUpdate") end }
-	}
+		data = {
+			on_update = function()
+				vim.cmd("TSUpdate")
+			end,
+		},
+	},
 })
 
 vim.pack.add({
@@ -42,9 +46,9 @@ vim.pack.add({
 })
 
 vim.pack.add({
-	{ src = gh('MunifTanjim/nui.nvim') },
-	{ src = gh('nvim-lua/plenary.nvim') },
-	{ src = gh('nvim-neo-tree/neo-tree.nvim') },
+	{ src = gh("MunifTanjim/nui.nvim") },
+	{ src = gh("nvim-lua/plenary.nvim") },
+	{ src = gh("nvim-neo-tree/neo-tree.nvim") },
 })
 
 local tree_command = require("neo-tree.command")
@@ -53,6 +57,15 @@ vim.keymap.set("n", "<leader>e", function()
 end)
 require("neo-tree").setup({
 	sources = { "filesystem", "buffers", "git_status" },
+})
+
+vim.pack.add({
+	{ src = gh("nvim-tree/nvim-web-devicons") },
+	{ src = gh("akinsho/bufferline.nvim") },
+})
+
+require("bufferline").setup({
+	diagnostics = "nvim_lsp"
 })
 
 vim.pack.add({
