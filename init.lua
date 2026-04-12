@@ -20,7 +20,8 @@ vim.opt.number = true
 vim.opt.signcolumn = "yes:1"
 vim.opt.wrap = true
 
-require("plugins.telescope")
+-- require("plugins.telescope")
+require("plugins.fzf")
 require("plugins.lsp")
 require("plugins.conform")
 require("plugins.lualine")
