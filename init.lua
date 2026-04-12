@@ -2,31 +2,31 @@ gh = function(d)
 	return "https://github.com/" .. d
 end
 
-vim.opt.signcolumn = "yes:1"
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = true
+vim.g.loaded_netrwPlugin = true
 vim.g.mapleader = " "
-vim.opt.number = true
+
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.termguicolors = true
+vim.opt.conceallevel = 0
+vim.opt.smarttab = true
+
+vim.opt.smartindent = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = true
-vim.opt.smartindent = true
-vim.opt.smarttab = true
-vim.opt.conceallevel = 0
+
+vim.opt.number = true
+vim.opt.signcolumn = "yes:1"
 vim.opt.wrap = true
 
--- completion
-vim.opt.completeopt = "menu,menuone,noselect,popup"
-vim.o.autocomplete = true
-
-require("plugins.lsp")
 require("plugins.telescope")
+require("plugins.lsp")
 require("plugins.conform")
 require("plugins.lualine")
+require("plugins.noice")
 
 require("config.keybinds")
 
@@ -65,7 +65,9 @@ vim.pack.add({
 })
 
 require("bufferline").setup({
-	diagnostics = "nvim_lsp"
+	options = {
+		diagnostics = "nvim_lsp"
+	}
 })
 
 vim.pack.add({
@@ -75,5 +77,3 @@ local tokyonight = require("tokyonight")
 tokyonight.setup({ transparent = true })
 tokyonight.load()
 vim.cmd("colorscheme tokyonight")
-
-require("vim._core.ui2").enable({})

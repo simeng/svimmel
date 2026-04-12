@@ -1,13 +1,16 @@
+vim.opt.completeopt = "menu,menuone,noinsert"
+vim.opt.autocomplete = true
+
 vim.pack.add({
-    { src = gh("mason-org/mason-lspconfig.nvim") },
-    { src = gh("mason-org/mason.nvim") },
+	{ src = gh("mason-org/mason-lspconfig.nvim") },
+	{ src = gh("mason-org/mason.nvim") },
 	{ src = gh("neovim/nvim-lspconfig") },
 })
 
 require("mason").setup()
-require("mason-lspconfig").setup {
-    ensure_installed = { "emmet_ls", "lua_ls", "rust_analyzer", "eslint", "ts_ls", "tailwindcss" }
-}
+require("mason-lspconfig").setup({
+	ensure_installed = { "emmet_ls", "lua_ls", "rust_analyzer", "eslint", "ts_ls", "tailwindcss" },
+})
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("lsp_completion", { clear = true }),
@@ -25,3 +28,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
+vim.keymap.set("i", "<CR>", function()
+	return vim.fn.pumvisible() ~= 0 and "<C-y>" or "<CR>"
+end, { expr = true })

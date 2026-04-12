@@ -3,10 +3,18 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
 })
 
-local builtin = require('telescope.builtin')
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "TelescopePrompt",
+	callback = function()
+		vim.bo.autocomplete = false
+	end,
+})
 
-require('telescope').setup({})
+local builtin = require("telescope.builtin")
+
+require("telescope").setup({})
 
 vim.keymap.set("n", "<leader> ", builtin.find_files, {})
 vim.keymap.set("n", "<leader>f", builtin.find_files, {})
 vim.keymap.set("n", "<leader>fg", builtin.git_files, {})
+vim.keymap.set("n", "<leader>sg", builtin.live_grep, {})
