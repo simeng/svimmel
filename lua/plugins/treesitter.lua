@@ -8,3 +8,7 @@ vim.pack.add({
 		},
 	},
 })
+
+treesitter_enable("lua")
+treesitter_enable("php")
+treesitter_enable("typescript")

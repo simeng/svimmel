@@ -19,6 +19,7 @@ treesitter_enable = function(filetype)
 			if vim.treesitter.query.get(lang, "folds") then
 				vim.wo.foldmethod = "expr"
 				vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+				vim.wo.foldlevel = 99
 			end
 		end,
 	})

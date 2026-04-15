@@ -1,6 +1,3 @@
-vim.opt.completeopt = "menu,menuone,noinsert"
-vim.opt.autocomplete = true
-
 vim.pack.add({
 	{ src = gh("mason-org/mason-lspconfig.nvim") },
 	{ src = gh("mason-org/mason.nvim") },

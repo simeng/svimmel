@@ -8,6 +8,6 @@ fzf.setup({
 })
 
 vim.keymap.set("n", "<leader> ", fzf.files, {})
-vim.keymap.set("n", "<leader>f", fzf.files, {})
 vim.keymap.set("n", "<leader>fg", fzf.git_files, {})
 vim.keymap.set("n", "<leader>sg", fzf.live_grep, {})
+vim.keymap.set("n", "<leader>/", fzf.live_grep, {})
